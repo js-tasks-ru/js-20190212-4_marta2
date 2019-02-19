@@ -7,11 +7,6 @@
  */
 
 function getMinMax(str) {
-
-    function isNumeric(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
-    }
-
     let arr = str.split("");
     let arrNumeric = [];
     let obj = {};
@@ -33,4 +28,8 @@ function getMinMax(str) {
         }
     }
     return obj;
+}
+
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
 }
