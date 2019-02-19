@@ -20,10 +20,13 @@ function getMinMax(str) {
         if (tmp.join('') !== '-' && tmp[0]) arrNumeric.push(tmp.join(''));
     }
 
+    obj.min = arrNumeric[0];
+    obj.max = arrNumeric[0];
+
     for (let i = 0; i < arrNumeric.length; i++) {
-        if (!obj.min || +obj.min > +arrNumeric[i]) {
+        if (+obj.min > +arrNumeric[i]) {
             obj.min = arrNumeric[i];
-        } else if (!obj.max || +obj.max < +arrNumeric[i]) {
+        } else if (+obj.max < +arrNumeric[i]) {
             obj.max = arrNumeric[i];
         }
     }
