@@ -6,13 +6,13 @@
  * @returns {{min:number, max:number}}  объект
  */
 
-function isNumeric(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-}
+function getMinMax(str) {
 
-function getMinMax(string) {
-    
-    let arr = string.split("");
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    let arr = str.split("");
     let arrNumeric = [];
     let obj = {};
 
@@ -22,10 +22,10 @@ function getMinMax(string) {
             tmp.push(arr[i]);
             i++;
         }
-        if(tmp.join('') !== '-' && tmp[0]) arrNumeric.push(tmp.join(''));
+        if (tmp.join('') !== '-' && tmp[0]) arrNumeric.push(tmp.join(''));
     }
 
-    for(let i= 0; i < arrNumeric.length; i++){
+    for (let i = 0; i < arrNumeric.length; i++) {
         if (!obj.min || +obj.min > +arrNumeric[i]) {
             obj.min = arrNumeric[i];
         } else if (!obj.max || +obj.max < +arrNumeric[i]) {
@@ -34,4 +34,3 @@ function getMinMax(string) {
     }
     return obj;
 }
-
