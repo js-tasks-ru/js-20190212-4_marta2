@@ -4,6 +4,7 @@
  * @param {number} n index
  * @returns {number}
  */
+
 function pow(m, n) {
     let result = m;
     for (let i = 0; i < n - 1; i++) {
@@ -11,6 +12,3 @@ function pow(m, n) {
     }
     return result;
 }
-
-
-console.log(pow(3, 4));
