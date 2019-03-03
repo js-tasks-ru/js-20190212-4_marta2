@@ -6,10 +6,12 @@
  */
 function showSalary(data, age) {
     let str = '';
-    for (let i = 0; i < data.length; i++){
-        if(data[i].age <= age){
-            str = str + data[i].name + ', ' + data[i].balance + '\n';
+    let arr = [];
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].age <= age) {
+            arr.push(data[i].name + ', ' + data[i].balance;);
         }
     }
+    str = arr.join('\n');
     return str;
 }
