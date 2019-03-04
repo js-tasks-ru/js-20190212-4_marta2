@@ -4,8 +4,11 @@ let calendar = {
 };
 
 calendar[Symbol.iterator] = function () {
-    let current = new Date(this.from.setDate(this.from.getDate() + 1));
-    let last = this.to.setDate(this.to.getDate() + 1);
+    let current = new Date(this.from.setHours(0, 0, 0));
+    current.setDate(current.getDate() + 1);
+    let last = this.to;
+
+
 
     return {
         next() {
@@ -14,15 +17,15 @@ calendar[Symbol.iterator] = function () {
                 let strDate = '';
                 if (day === 0 || day === 6) {
                     if (current.getDate() < 10) {
-                        strDate = "[0" + current.getDate() + "]";
+                        strDate = '[0' + current.getDate() + ']';
                     } else {
-                        strDate = "[" + current.getDate() + "]";
+                        strDate = '[' + current.getDate() + ']';
                     }
                 } else {
                     if (current.getDate() < 10) {
-                        strDate = "0" + current.getDate();
+                        strDate = '0' + current.getDate();
                     } else {
-                        strDate = current.getDate();
+                        strDate = current.getDate().toString();
                     }                    
                 }
                 current.setDate(current.getDate() + 1);
