@@ -4,7 +4,7 @@ let calendar = {
 };
 
 calendar[Symbol.iterator] = function () {
-    let current = this.from;
+    let current = new Date(this.from.setDate(this.from.getDate() + 1));
     let last = this.to.setDate(this.to.getDate() + 1);
 
     return {
