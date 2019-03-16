@@ -8,5 +8,8 @@
  * @return {Function}
  */
 function makeLogging(fn, log) {
-
+    return function (...args) {
+        log.push(args);
+        return fn.call(this, args[0], args[1]);
+    }
 }
