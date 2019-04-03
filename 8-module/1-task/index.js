@@ -21,11 +21,8 @@ function SortableTable(items) {
      * @property {Element} - обязательно свойство, которое ссылается на элемент <table>
      */
     let theadNames = ['Name', 'Age', 'Salary', 'City'];
-
+    
     this.el = document.createElement('table');
-    if(document.querySelector('.result > table') === null){
-        document.querySelector('.result').appendChild(this.el);
-    }
     this.header = this.el.createTHead();
     this.headerRow = this.header.insertRow(0);
 
@@ -46,6 +43,10 @@ function SortableTable(items) {
             bodyCell.innerHTML = items[i][key];
             counter++;
         }
+    }
+    
+    if(document.querySelector('.result > table') === null){
+        document.querySelector('.result').appendChild(this.el);
     }
 
     /**
