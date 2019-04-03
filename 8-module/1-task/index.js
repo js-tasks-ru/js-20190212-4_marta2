@@ -23,6 +23,9 @@ function SortableTable(items) {
     let theadNames = ['Name', 'Age', 'Salary', 'City'];
 
     this.el = document.createElement('table');
+    if(document.querySelector('.result > table') === null){
+        document.querySelector('.result').appendChild(this.el);
+    }
     this.header = this.el.createTHead();
     this.headerRow = this.header.insertRow(0);
 
