@@ -21,17 +21,28 @@ function SortableTable(items) {
      * @property {Element} - обязательно свойство, которое ссылается на элемент <table>
      */
     let theadNames = ['Name', 'Age', 'Salary', 'City'];
-    
+
     this.el = document.createElement('table');
     this.header = this.el.createTHead();
     this.headerRow = this.header.insertRow(0);
 
+    
     for (let i = 0; i < theadNames.length; i++) {
         let cell = this.headerRow.insertCell(i);
         cell.innerHTML = theadNames[i];
         cell.dataset.header = theadNames[i].toLowerCase();
     }
 
+    if(document.querySelector('.result') !== null){
+        this.result = document.querySelector('.result');
+        
+    } else {
+        this.result = document.createElement('div');
+        document.body.appendChild(this.result);
+        this.result.classList.add('result');
+    }
+    this.result.appendChild(this.el);
+    
     this.tBody = this.el.createTBody();
 
     for (let i = 0; i < items.length; i++) {
@@ -44,10 +55,7 @@ function SortableTable(items) {
             counter++;
         }
     }
-    
-    if(document.querySelector('.result > table') === null){
-        document.querySelector('.result').appendChild(this.el);
-    }
+
 
     /**
      * Метод выполняет сортировку таблицы
@@ -60,7 +68,7 @@ function SortableTable(items) {
         if (desc != true) {
             trs.sort(function (rowA, rowB) {
                 if (typeCell(rowA.cells[column].innerHTML) === 'number') {
-                    return rowB.cells[column].innerHTML - rowA.cells[column].innerHTML;
+                    return rowA.cells[column].innerHTML - rowB.cells[column].innerHTML;
                 } else {
                     return rowB.cells[column].innerHTML > rowA.cells[column].innerHTML ? -1 : 1;
                 }
@@ -68,7 +76,7 @@ function SortableTable(items) {
         } else {
             trs.sort(function (rowA, rowB) {
                 if (typeCell(rowA.cells[column].innerHTML) === 'number') {
-                    return rowA.cells[column].innerHTML - rowB.cells[column].innerHTML;
+                    return rowB.cells[column].innerHTML - rowA.cells[column].innerHTML;
                 } else {
                     return rowB.cells[column].innerHTML < rowA.cells[column].innerHTML ? -1 : 1;
                 }
@@ -78,7 +86,7 @@ function SortableTable(items) {
         this.renderTrs(trs);
 
         function typeCell(cell) {
-            if (typeof +cell === 'number' && !isNaN(+cell)) {
+            if (typeof + cell === 'number' && !isNaN(+cell)) {
                 return 'number';
             } else {
                 return 'string';
