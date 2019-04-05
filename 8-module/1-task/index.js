@@ -25,7 +25,6 @@ function SortableTable(items) {
     this.el = document.createElement('table');
     this.header = this.el.createTHead();
     this.headerRow = this.header.insertRow(0);
-
     
     for (let i = 0; i < theadNames.length; i++) {
         let cell = this.headerRow.insertCell(i);
@@ -34,8 +33,7 @@ function SortableTable(items) {
     }
 
     if(document.querySelector('.result') !== null){
-        this.result = document.querySelector('.result');
-        
+        this.result = document.querySelector('.result');        
     } else {
         this.result = document.createElement('div');
         document.body.appendChild(this.result);
@@ -63,7 +61,8 @@ function SortableTable(items) {
      * @param {boolean} desc - признак того, что сортировка должна идти в обратном порядке
      */
     this.sort = function (column, desc = false) {
-        let trs = Array.prototype.slice.call(document.querySelectorAll('#row'));
+        let trs = Array.prototype.slice.call(this.el.querySelectorAll('#row'));
+        
 
         if (desc != true) {
             trs.sort(function (rowA, rowB) {
