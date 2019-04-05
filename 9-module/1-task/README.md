@@ -7,7 +7,7 @@
 Пример кода
 ```javascript
 function extendClass(Main, Parent) {
-    // здесь ваш код наследования
+    
 }
 
 function Animal() {
